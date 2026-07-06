@@ -1,0 +1,311 @@
+/* ---------- Reset & Base ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f4f5f7;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #172b4d;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn-primary {
+  background: #0052cc;
+  color: white;
+}
+.btn-primary:hover {
+  background: #0047b3;
+}
+
+.btn-secondary {
+  background: #ebecf0;
+  color: #172b4d;
+}
+.btn-secondary:hover {
+  background: #d6d8e0;
+}
+
+.btn-danger {
+  background: transparent;
+  color: #6b778c;
+  font-size: 1.1rem;
+  padding: 0 0.3rem;
+  border-radius: 4px;
+}
+.btn-danger:hover {
+  background: #ebecf0;
+  color: #b00;
+}
+
+/* ---------- Board (grid) ---------- */
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ---------- Column ---------- */
+.column {
+  background: #ebecf0;
+  border-radius: 12px;
+  padding: 0.75rem;
+  box-shadow: 0 1px 4px rgba(9, 30, 66, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.5rem 0.75rem 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #172b4d;
+  border-bottom: 2px solid rgba(9, 30, 66, 0.08);
+  margin-bottom: 0.75rem;
+}
+
+.column-header .column-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.column-header .badge {
+  background: rgba(9, 30, 66, 0.08);
+  padding: 0.1rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.column-header .column-actions {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.column-header .column-actions button {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #6b778c;
+  padding: 0 0.2rem;
+  border-radius: 4px;
+  transition: background 0.1s;
+}
+.column-header .column-actions button:hover {
+  background: rgba(9, 30, 66, 0.08);
+  color: #172b4d;
+}
+
+/* ---------- Card List (drop zone) ---------- */
+.card-list {
+  min-height: 160px;
+  padding: 0.2rem 0;
+  border-radius: 6px;
+  transition: background 0.1s;
+  flex: 1;
+}
+
+.card-list.drag-over {
+  background: rgba(9, 30, 66, 0.05);
+  outline: 2px dashed #a5adba;
+  outline-offset: -4px;
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 1px 3px rgba(9, 30, 66, 0.12);
+  cursor: grab;
+  transition: box-shadow 0.15s, transform 0.1s;
+  word-break: break-word;
+  font-size: 0.95rem;
+  color: #172b4d;
+  border: 1px solid rgba(9, 30, 66, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card:active {
+  cursor: grabbing;
+}
+
+.card.dragging {
+  opacity: 0.3;
+  transform: scale(0.96) rotate(0.5deg);
+  box-shadow: 0 8px 16px rgba(9, 30, 66, 0.2);
+}
+
+.card .card-text {
+  flex: 1;
+}
+
+.card .delete-card {
+  background: transparent;
+  border: none;
+  color: #6b778c;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 0.2rem;
+  border-radius: 4px;
+  transition: background 0.1s, color 0.1s;
+  flex-shrink: 0;
+}
+.card .delete-card:hover {
+  background: #ebecf0;
+  color: #b00;
+}
+
+/* ---------- Add card button inside column ---------- */
+.add-card-btn {
+  background: transparent;
+  border: none;
+  color: #5e6c84;
+  padding: 0.6rem 0.5rem;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-align: left;
+  transition: background 0.1s, color 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.add-card-btn:hover {
+  background: rgba(9, 30, 66, 0.04);
+  color: #172b4d;
+}
+
+/* ---------- Modals ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 30, 66, 0.5);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 12px 40px rgba(9, 30, 66, 0.2);
+  position: relative;
+}
+
+.modal-content h2 {
+  font-size: 1.4rem;
+  color: #172b4d;
+  margin-bottom: 1rem;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 2px solid #dfe1e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.15s;
+  margin-bottom: 1.2rem;
+}
+
+.modal-content input:focus {
+  border-color: #0052cc;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.close-modal {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.2rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #6b778c;
+  transition: color 0.1s;
+}
+.close-modal:hover {
+  color: #172b4d;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+  .board {
+    grid-template-columns: 1fr;
+  }
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .app-header h1 {
+    font-size: 1.6rem;
+  }
+  }
