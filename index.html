@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <h1>📋 Kanban Board</h1>
+      <button id="addColumnBtn" class="btn btn-primary">+ Add Column</button>
+    </header>
+
+    <main class="board" id="board"></main>
+  </div>
+
+  <!-- Modal for adding new card -->
+  <div id="cardModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Add New Card</h2>
+      <form id="cardForm">
+        <input type="text" id="cardInput" placeholder="Enter card title..." required />
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Add Card</button>
+          <button type="button" class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal for adding new column -->
+  <div id="columnModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Add New Column</h2>
+      <form id="columnForm">
+        <input type="text" id="columnInput" placeholder="Enter column title..." required />
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-primary">Add Column</button>
+          <button type="button" class="btn btn-secondary" id="cancelColumnBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
